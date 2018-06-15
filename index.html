@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap File -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Overall Bootstrap Grid -->
+    <div class="container">
+
+        <!-- Jumbotron with Title -->
+        <div class="Jumbotron">
+            <h1 class="text-center">
+                <br>
+                <strong>Quiz Game</strong>
+            </h1>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="text-center">
+                <!-- Instructions-->
+                <div id="instructions" class="card">
+                    <h4 class="card-header" style="text-align: center;">Quiz Game instructions!</h4>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <p style="text-align: justify;font-size: 12px"> You will be given a random question at the start of the game. There are four answers below. By
+                                clicking on the correct answer you will win 1 point. You win the game by matching 3 of 5.</p>
+                        </div>
+                    </div>
+                    <h4 id="question" class="card-header" style="text-align: left;">Pergunta</h4>
+
+                    <div id="wrapper">
+                        <div id="display" style="text-align: center;">00:00</div>
+                    </div>
+
+                    <h4 id="answer1" class="card-header" style="text-align: left;">A - </h4>
+                    <h4 id="answer2" class="card-header" style="text-align: left;">B - </h4>
+                    <h4 id="answer3" class="card-header" style="text-align: left;">C - </h4>
+                    <h4 id="answer4" class="card-header" style="text-align: left;">D - </h4>
+                </div>
+            </div>
+
+
+            <div class="text-center">
+                <h4 class="card" style="text-align: center;">Results</h4>
+
+                <!-- Results-->
+                <div class="card-group">
+                    <div id="Results" class="card" style="width: 225px">
+                        <h4 class="card-header" style="text-align: center;">To achieve</h4>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="spachieve" value="0" style="text-align: center;">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Results" class="card" style="width: 225px">
+                        <h4 class="card-header" style="text-align: center;">Correct</h4>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="sptotalscore" value="0" style="text-align: center;">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="Results" class="card" style="width: 225px">
+                            <h4 class="card-header" style="text-align: center;">Errors</h4>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <p id="sperrors" value="0" style="text-align: center;">0</p>
+                                </div>
+                            </div>
+                        </div>
+                    <div id="Results" class="card" style="width: 225px">
+                        <h4 class="card-header" style="text-align: center;">Wins</h4>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="spwins" value="0" style="text-align: center;">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Results" class="card" style="width: 225px">
+                        <h4 class="card-header" style="text-align: center;">Losses</h4>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="splosses" value="0" style="text-align: center;">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript" src="quiz.js"></script>
+
+</body>
+
+</html>

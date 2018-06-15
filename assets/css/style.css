@@ -1,0 +1,23 @@
+/**
+ * Style for crystal game
+ * Luiz Oliveira
+ **/
+
+* {
+  text-align: left;
+  font-style: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; 
+}
+
+body{
+  width: 900px;
+}
+
+.card-header{
+  font-size: 16px;
+  font-size-adjust: initial;
+}
+
+.card-img-top{
+  width: 50px;
+
+}
