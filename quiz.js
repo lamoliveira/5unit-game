@@ -1,48 +1,42 @@
-// STOPWATCH ACTIVITY (SOLUTION)
-// =============================
 
-// This code will run as soon as the page loads
-window.onload = function() {
-  stopwatch.start();
-};
-//  Variable that will hold our setInterval that runs the stopwatch
-var intervalId;
-// prevents the clock from being sped up unnecessarily
-var clockRunning = false;
-// Our stopwatch object
+var  clockRunning= false;
+ var intervalId= 0;
+
+
 var stopwatch = {
   time: 0,
-  question: 1,
-  reset: function() {
+  reset: function () {
     stopwatch.time = 0;
-    // DONE: Change the "display" div to "00:00."
-    $("#display").text("00:00");
-    // DONE: Empty the "laps" div.
-    $("#question").text("");
+  
   },
-  start: function() {
-    // DONE: Use setInterval to start the count here and set the clock to running.
+  start: function () {
     if (!clockRunning) {
       intervalId = setInterval(stopwatch.count, 1000);
       clockRunning = true;
     }
   },
-  stop: function() {
-    // DONE: Use clearInterval to stop the count here and set the clock to not be running.
-    clearInterval(intervalId);
-    clockRunning = false;
-  },
-  count: function() {
+  count: function () {
     // DONE: increment time by 1, remember we cant use "this" here.
-    stopwatch.time = stopwatch.time +1;
+    stopwatch.time = stopwatch.time + 1;
     // DONE: Get the current time, pass that into the stopwatch.timeConverter function,
     //       and save the result in a variable.
     var converted = stopwatch.timeConverter(stopwatch.time);
     //console.log(converted);
     // DONE: Use the variable we just created to show the converted time in the "display" div.
     $("#display").text(converted);
+    if (converted === "00:20") {
+      $("#warning1").show();
+    } else if (converted === "00:30") {
+      $("#warning2").show();
+    } else if (converted === "00:40") {
+      $("#warning3").show();
+    } else if (converted === "00:50") {
+      $("#warning4").show();
+    } else if (converted === "01:00") {
+      Console.log("time is Up!!");
+    };
   },
-  timeConverter: function(t) {
+  timeConverter: function (t) {
     var minutes = Math.floor(t / 60);
     var seconds = t - (minutes * 60);
     if (seconds < 10) {
@@ -57,93 +51,113 @@ var stopwatch = {
     return minutes + ":" + seconds;
   }
 };
-    // Make our variables global to the runtime of our application
-    var question={
-      correctanswer: "1",
-      question: "Show Question",
-      answer1: "Answer 1",
-      answer2: "Answer 2",
-      answer3: "Answer 3",
-      answer4: "Answer 4",
-      get: function() {
-        // DONE: gets one question to show.
-        var bdquestion={
+// Make our variables global to the runtime of application
+var question = {
+  correctanswer: "",
+  question: "",
+  answer1: "",
+  answer2: "",
+  answer3: "",
+  answer4: "",
 
-        };
-        $("#question").html(this.question);
-        $("#answer1").html(this.answer1);
-        $("#answer2").html(this.answer2);
-        $("#answer3").html(this.answer3);
-        $("#answer4").html(this.answer4);
-      },
-      start: function() {
-        // DONE: Use setInterval to start the count here and set the clock to running.
-        if (!clockRunning) {
-          intervalId = setInterval(stopwatch.count, 1000);
-          clockRunning = true;
-        }
-      },
-      testanswer: function(answer) {
-        //var image = ($(this).attr("value"));
-        console.log("answer:" + answer);
-        // test the answer
-        if (answer === question.correctanswer) {
-          console.log("correct answer");
-        vntotalscore ++;}
-        else {
-          vnerrors ++;
-          console.log("Wrong answer");}
-        console.log("totalscore: " + vntotalscore);
-        $("#sptotalscore").text(vntotalscore);
-        $("#sperrors").text(vnerrors);
-        if (vnerrors > vnachieve) {
-            vnlosses++;
-            $("#splosses").text(vnlosses);
-            initialize();
-        } else if (vntotalscore === vnachieve) {
-            vnwins++;
-            vnachieve++;
-            $("#spwins").text(vnwins);
-            if (vntotalscore === 5) {alert("You answered all questions correctly!! Congratulations");}
-            initialize();
-        }
-      }
+  new: function() {
+    question.newquestion();
+    question.show();
+  },  
+  show: function () {
+    $("#warning1").hide();
+    $("#warning2").hide();
+    $("#warning3").hide();
+    $("#warning4").hide();
+    $("#sptotalscore").text(vntotalscore);
+    $("#spwins").text(vnwins);
+    $("#sperrors").text(vnerrors);
+    $("#splosses").text(vnlosses);
+    $("#question").html(this.question);
+    $("#answer1").html(this.answer1);
+    $("#answer2").html(this.answer2);
+    $("#answer3").html(this.answer3);
+    $("#answer4").html(this.answer4);
+  },
+  newquestion: function () {
+    // DONE: Use newquestion to get a newquestion from the array.
+    // test for answered questions
+    var ind1 = Math.floor(Math.random()*myquestions.length);
+    console.log(ind1);
+    this.question = myquestions[ind1].question;
+    this.correctanswer = myquestions[ind1].correctanswer;
+    this.answer1 = myquestions[ind1].answers.a;
+    this.answer2 = myquestions[ind1].answers.b;
+    this.answer3 = myquestions[ind1].answers.c;
+    this.answer4 = myquestions[ind1].answers.d;
+  },
+}
+// Globals
 
-    };
-    var vacrystal = [0, 1, 2, 3];
-    var vnachieve = 3;
-    var vntotalscore = 0;
-    var vnwins = 0;
-    var vnlosses = 0;
-    var vnerrors = 0;
-    // Use a function to initialize our calculator.
-    // This way when the user hits clear, we can guarantee a reset of the app.
-    function initialize() {
-        vntotalscore = 0;
-        vnerrors=0;
-      
-        console.log("achieve : " + vnachieve);
+var vntotalscore = 0;
+var vnwins = 0;
+var vnlosses = 0;
+var vnerrors = 0;
+var totquestions = 0;
 
-        $("#spachieve").text(vnachieve);
-        $("#sptotalscore").text(vntotalscore);
-        $("#spwins").text(vnwins);
-        $("#sperrors").text(vnerrors);
-        $("#splosses").text(vnlosses);
-        question.get();
-    }
-    $("#answer1").on("click", function () {
-      question.testanswer("1");
-    });
-    $("#answer2").on("click", function () {
-      question.testanswer("2");
-    });
-    $("#answer3").on("click", function () {
-      question.testanswer("3");
-    });
-    $("#answer4").on("click", function () {
-      question.testanswer("4");
-    });
+function newgame() {
+  vntotalscore = 0;
+  vnerrors = 0;
+  totquestions = 0;
+  question.new();
+  totquestions++;
+  stopwatch.reset();  
+  stopwatch.start();
+  
+}
 
-    initialize();
+ function testanswer(answer) {
+  //var image = ($(this).attr("value"));
+  console.log("answer:" + answer);
+  // test the answer
+  if (answer === question.correctanswer) {
+    console.log("correct answer");
+    vntotalscore++;
+  }
+  else {
+    vnerrors++;
+    console.log("Wrong answer");
+  }
+  console.log("totalquestions: " + totquestions);
+  console.log("totalscore: " + vntotalscore);
+ 
+  $("#sptotalscore").text(vntotalscore);
+  $("#sperrors").text(vnerrors);
+  if (vntotalscore === 5) {
+    vnwins++;
+    $("#spwins").text(vnwins);
+    alert("You answered all the 5 questions correctly!! Congratulations");
+    newgame();
+  } else if (totquestions > 4) {
+    vnlosses++;
+    $("#splosses").text(vnlosses);
+    alert("You've got " + vnerrors + " errors and loose the game. Try again");
+    newgame();
+  } else {
+    question.new();
+    stopwatch.reset();  
+    stopwatch.start();  
+    totquestions++;
+  }
+  
+}
+// end functions
 
+// This code will run as soon as the page loads
+window.onload = function() {
+  newgame();
+  };
 
+$("#answer1").on("click", function () {
+  testanswer("1");})
+$("#answer2").on("click", function () {
+  testanswer("2");})
+$("#answer3").on("click", function () {
+  testanswer("3");})
+$("#answer4").on("click", function () {
+  testanswer("4");})
