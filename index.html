@@ -20,26 +20,28 @@
     <div class="container">
 
         <!-- Jumbotron with Title -->
-        <div class="Jumbotron">
-            <h1 class="text-center">
-                <br>
-                <strong>Quiz Game</strong>
+        <div class="text-center">
+            <h1 class="text-center" style="margin-top: 20px">
+                <strong>Totally trivial trivia!!</strong>
             </h1>
             <hr>
         </div>
+        <div id="imagediv" class="text-center">
+            <img id="warning" src="" style="float: center;" width="250px"> </div>
+        <div id="messagediv" class="text-center"> </div>
 
-        <div class="row">
+        <div id="questiondiv" class="row">
             <div class="text-center">
                 <!-- Instructions-->
-                <div id="instructions" class="card">
-                    <h4 class="card-header" style="text-align: center;">Quiz Game instructions!</h4>
+                <div id="instructions" class="text-center">
+                    <h4 class="card-header" style="text-align: center;">Instructions</h4>
                     <div class="card-body">
                         <div class="text-center">
-                            <p style="text-align: justify;font-size: 12px"> You will be given a random question at the start of the game. There are four answers below. By
-                                clicking on the correct answer you will win 1 point. You win the game by matching 3 of 5.</p>
+                            <p style="text-align: justify;font-size: 12px"> You will be given 5 random question at the start of the game. There are four answers below. Just
+                                click the correct answer.</p>
                         </div>
                     </div>
-                    <h4 id="question" class="card-header" style="text-align: left;">Pergunta</h4>
+                    <h4 id="question" class="card-header" style="text-align: left;"></h4>
 
                     <div id="wrapper">
                         <img id="warning1" style="float: right;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
@@ -47,27 +49,20 @@
                         <img id="warning3" style="float: right;margin-right: 60px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
                         <img id="warning4" style="float: right;margin-right: 70px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
                         <div id="display" style="text-align: center;"></div>
-                        <h4 id="answer1" class="card-header" style="text-align: left;">A - </h4>
-                        <h4 id="answer2" class="card-header" style="text-align: left;">B - </h4>
-                        <h4 id="answer3" class="card-header" style="text-align: left;">C - </h4>
-                        <h4 id="answer4" class="card-header" style="text-align: left;">D - </h4>
+                        <h4 id="answer1" class="card-header answer" style="text-align: left;background-color:white;">A - </h4>
+                        <h4 id="answer2" class="card-header answer" style="text-align: left;background-color: white;">B - </h4>
+                        <h4 id="answer3" class="card-header answer" style="text-align: left;background-color: white;">C - </h4>
+                        <h4 id="answer4" class="card-header answer" style="text-align: left;background-color: white;">D - </h4>
+
                     </div>
                 </div>
 
 
-                <div class="text-center">
+                <div id="results" class="text-center">
                     <h4 class="card" style="text-align: center;">Results</h4>
-
+                    <button id="start" type="button" class="btn btn-primary">Start new game</button>
                     <!-- Results-->
                     <div class="card-group">
-                        <!--<div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">To achieve</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="spachieve" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div> -->
                         <div id="Results" class="card" style="width: 225px">
                             <h4 class="card-header" style="text-align: center;">Correct</h4>
                             <div class="card-body">
@@ -77,10 +72,18 @@
                             </div>
                         </div>
                         <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Errors</h4>
+                            <h4 class="card-header" style="text-align: center;">Incorrect</h4>
                             <div class="card-body">
                                 <div class="text-center">
                                     <p id="sperrors" value="0" style="text-align: center;">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="Results" class="card" style="width: 225px">
+                            <h4 class="card-header" style="text-align: center;">Unanswered</h4>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <p id="spnotanswered" value="0" style="text-align: center;">0</p>
                                 </div>
                             </div>
                         </div>

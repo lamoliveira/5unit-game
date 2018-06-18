@@ -20,7 +20,8 @@ const myquestions = [
         c: "Bill Gates",
         d: "Steve Jobs"
       },
-      correctanswer: "1"
+      correctanswer: "1",
+      imgpath: "assets/images/graydon.jpg"
     },
     {
       question: "Which is the best site ever created?",
@@ -30,7 +31,8 @@ const myquestions = [
         c: "Google.com",
         d: "w3schools.com"
       },
-      correctanswer: "1"
+      correctanswer: "1",
+      imgpath: "assets/images/bootcamp.jpg"
     },
     {
       question: "Which is the most expensive technology course?",
@@ -40,7 +42,8 @@ const myquestions = [
         c: "Princeton",
         d: "UCF Bootcamp"
       },
-      correctanswer: "4"
+      correctanswer: "4",
+      imgpath: "assets/images/siteboot.jpg"
     },
     {
       question: "Which is the best city to live?",
@@ -50,7 +53,8 @@ const myquestions = [
         c: "New York",
         d: "Miami"
       },
-      correctanswer: "2"
+      correctanswer: "2",
+      imgpath: "assets/images/orlando.jpg"
     },
     {
       question: "Which is the best bootcamp TA?",
@@ -60,7 +64,8 @@ const myquestions = [
         c: "Billy Gateson",
         d: "Larry Ellison"
       },
-      correctanswer: "1"
+      correctanswer: "1",
+      imgpath: "assets/images/don.jpg"
     },
     {
       question: "Who is the actual USA's President?",
@@ -70,7 +75,8 @@ const myquestions = [
         c: "Donald Trump",
         d: "Donald Duck"
       },
-      correctanswer: "3"
+      correctanswer: "3",
+      imgpath: "assets/images/trump.jpg"
     },
     {
       question: "Who is the best world's soccer player?",
@@ -80,7 +86,8 @@ const myquestions = [
         c: "Cristian Gray",
         d: "What a Messi"
       },
-      correctanswer: "2"
+      correctanswer: "2",
+      imgpath: "assets/images/cr7.jpg"
     },
     {
       question: "Which country wins the 1994's World Cup ?",
@@ -90,7 +97,8 @@ const myquestions = [
         c: "Brazil",
         d: "Argentina"
       },
-      correctanswer: "3"
+      correctanswer: "3",
+      imgpath: "assets/images/brasil.jpg"
     },
     {
       question: "Which country wins the 1998's World Cup ?",
@@ -100,7 +108,8 @@ const myquestions = [
       c: "Brazil",
       d: "Argentina"
     },
-    correctanswer: "1"
+    correctanswer: "1",
+    imgpath: "assets/images/france.jpg"
   },
   {
     question: "Which tool uses $() to access methods?",
@@ -110,7 +119,8 @@ const myquestions = [
     c: "Bootstrap",
     d: "Html"
   },
-  correctanswer: "1"
+  correctanswer: "1",
+  imgpath: "assets/images/jquery.jpg"
   },
   
   {
@@ -121,7 +131,8 @@ const myquestions = [
     c: "Parenthesis",
     d: "Hashtag"
   },
-  correctanswer: "2"
+  correctanswer: "2",
+  imgpath: "assets/images/square.jpg"
   }
   
   ];
