@@ -61,6 +61,7 @@ var question = {
     $("#messagediv").show();
     $("#questiondiv").hide();
     delaytestscore = setTimeout(testscore, 3000);
+  
   },
   showincorrect: function () { // presents the answer was wrong and the correct one with a specific image
     $("#messagediv").html("Nope!! The correct answer was: " +this.vscorrectanswer);
@@ -69,6 +70,7 @@ var question = {
     $("#imagediv").show();
     $("#questiondiv").hide();
     delaytestscore = setTimeout(testscore, 3000);
+  
   },
   testanswer: function (answer) { // test a number of the answer chosen by the user and calls the presentation method of answer
     // test the answer
@@ -175,6 +177,7 @@ function showresults(){ // hide question informations and show the total results
 
 function testscore() { // verify the end of each games and if it is not the end reset the time and gets a new question
 console.log("totalscore: " + vntotalscore);
+$("#warning").attr("SRC", ""); // include to clean the image due to a delay that was showing the previous image
   if (vntotalscore === 5) {
     vnwins++;
     console.log("wins: " + vnwins);
