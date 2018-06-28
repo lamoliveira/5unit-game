@@ -10,9 +10,10 @@ var question = {
   answer3: "",
   answer4: "",
   imgpath: "", // set the path to be shown
+  localquestions: {}, // questions already answered
 
   new: function () { // thinking in a database in the future i think it will be more clear to organize the funtions
-    question.newquestion(); 
+    question.newquestion();
     question.show();
   },
   show: function () { // method to present all informations about the question
@@ -21,7 +22,7 @@ var question = {
     $("#warning2").hide();
     $("#warning3").hide();
     $("#warning4").hide();
-  
+
     $("#sptotalscore").text(vntotalscore); // present the total questions answered correctly for each game
     $("#spwins").text(vnwins); // present total wins of session
     $("#sperrors").text(vnerrors); // present total questions answered incorrectly for each game
@@ -31,11 +32,37 @@ var question = {
     $("#answer2").html(this.answer2);
     $("#answer3").html(this.answer3);
     $("#answer4").html(this.answer4);
+    question.stopwatch.start();
   },
   newquestion: function () {
     // DONE: Use newquestion to get a newquestion from the array constant in quiz.js.
     // 
-    var ind1 = Math.floor(Math.random() * myquestions.length); // ind1 it is a random number to choose a question from repo. 
+    if (question.localquestions.length === myquestions.length) { 
+      alert("You answered all the questions available and the game will repeat from now on");
+      localStorage.removeItem('localquestions');
+      question.localquestions = [];
+    }
+
+    var questionfound = false;
+    while (!questionfound) { // test if the question was already presented
+      var ind1 = Math.floor(Math.random() * myquestions.length); // ind1 it is a random number to choose a question from repo. 
+      console.log("-------------"+ind1);
+      console.log(myquestions[ind1].question);
+      console.log(question.localquestions);
+      console.log(question.localquestions.indexOf(myquestions[ind1].question));
+
+      if (question.localquestions.indexOf(myquestions[ind1].question)<0) {
+        questionfound = true;
+        this.localquestions.push(myquestions[ind1].question);
+        console.log("new question" + myquestions[ind1].question);
+        localStorage.setItem("localquestions", JSON.stringify(this.localquestions));
+        
+      } else {
+        var ind1 = Math.floor(Math.random() * myquestions.length); // ind1 it is a random number to choose a question from repo.
+        console.log("same question"); 
+      }
+    
+    }
     // It is possible to setup an array of questions already shown but i will focus in the new learning of APIs
     this.question = myquestions[ind1].question;
     this.correctanswer = myquestions[ind1].correctanswer;
@@ -44,33 +71,35 @@ var question = {
     this.answer3 = myquestions[ind1].answers.c;
     this.answer4 = myquestions[ind1].answers.d;
     this.imgpath = myquestions[ind1].imgpath;
-    if (this.correctanswer === "1"){ 
+    if (this.correctanswer === "1") {
       this.vscorrectanswer = this.answer1;
-    } else if (this.correctanswer === "2"){
+    } else if (this.correctanswer === "2") {
       this.vscorrectanswer = this.answer2;
-    } else if (this.correctanswer === "3"){
+    } else if (this.correctanswer === "3") {
       this.vscorrectanswer = this.answer3;
-    } else if (this.correctanswer === "4"){
+    } else if (this.correctanswer === "4") {
       this.vscorrectanswer = this.answer4;
     }
   },
-    showcorrect: function () { // presents the correct answer with correspondent image and hide the div questions for 3 seconds and calls functions to test if the game should finish 
+  showcorrect: function () { // presents the correct answer with correspondent image and hide the div questions for 3 seconds and calls functions to test if the game should finish 
     $("#warning").attr("SRC", this.imgpath);
     $("#messagediv").html("Correct!!");
     $("#imagediv").show();
     $("#messagediv").show();
     $("#questiondiv").hide();
+    $("#instructions").hide();
     delaytestscore = setTimeout(testscore, 3000);
-  
+
   },
   showincorrect: function () { // presents the answer was wrong and the correct one with a specific image
-    $("#messagediv").html("Nope!! The correct answer was: " +this.vscorrectanswer);
+    $("#messagediv").html("Nope!! The correct answer was: " + this.vscorrectanswer);
     $("#messagediv").show();
     $("#warning").attr("SRC", "assets/images/looser.webp");
     $("#imagediv").show();
     $("#questiondiv").hide();
+    $("#instructions").hide();
     delaytestscore = setTimeout(testscore, 3000);
-  
+
   },
   testanswer: function (answer) { // test a number of the answer chosen by the user and calls the presentation method of answer
     // test the answer
@@ -85,15 +114,41 @@ var question = {
     $("#sptotalscore").text(vntotalscore); // present the total score but it is only shown when the round game finish
     $("#sperrors").text(vnerrors);
   },
+
+  loadQuestions: function () {
+
+
+    question.localquestions = JSON.parse(localStorage.getItem("localquestions"));
+    console.log("load");
+    console.log(question.localquestions);
+    // Checks to see if we have any question in localStorage
+    // If we do, set the localquestions variable to our localsquestions
+    // Otherwise set the localsquestions variable to an empty array
+    if (!Array.isArray(question.localquestions)) {
+      question.localquestions = [];
+    }
+
+    // console log localsquestions
+    for (var i = 0; i < question.localquestions.length; i++) {
+      console.log(question.localquestions[i]);
+    }
+  },
   stopwatch: { //object to control the time of each question
     time: 0,
     clockRunning: false,
     intervalId: 0,
     reset: function () {
-      time = 25; // 25 seconds for each questions
+      this.time = 25; // 25 seconds for each questions
 
     },
+    stop: function() {
+      // DONE: Use clearInterval to stop the count here and set the clock to not be running.
+      clearInterval(this.intervalId);
+      this.clockRunning = false;
+      this.time = 25;
+    },
     start: function () {
+      time = 25; // 25 seconds for each questions
       if (!this.clockRunning) {
         this.intervalId = setInterval(this.count, 1000); // 1 second interval
         this.clockRunning = true;
@@ -150,18 +205,21 @@ function newgame() { // reset the game variables and hide and show the divs int 
   vnerrors = 0;
   vnnotanswered = 0;
   totquestions = 0;
+  question.loadQuestions(); //use session storage to control questions already presented
+  console.log("onload");
+  console.log(question.sessionquestions);
   question.new();
   totquestions++;
-  question.stopwatch.reset();
-  question.stopwatch.start();
+
   $("#imagediv").hide();
   $("#questiondiv").show();
   $("#instructions").show();
   $("#wrapper").show();
   $("#results").hide();
+  $("#question").show();
 }
 
-function showresults(){ // hide question informations and show the total results
+function showresults() { // hide question informations and show the total results
 
   $("#spwins").text(vnwins);
   $("#splosses").text(vnlosses);
@@ -169,15 +227,17 @@ function showresults(){ // hide question informations and show the total results
   $("#imagediv").hide();
   $("#messagediv").hide();
   $("#questiondiv").show();
-  $("#instructions").hide();
+  $("#instructions").show();
   $("#wrapper").hide();
   $("#results").show();
+  $("#question").hide();
+  question.stopwatch.stop();
 
 }
 
 function testscore() { // verify the end of each games and if it is not the end reset the time and gets a new question
-console.log("totalscore: " + vntotalscore);
-$("#warning").attr("SRC", ""); // include to clean the image due to a delay that was showing the previous image
+  console.log("totalscore: " + vntotalscore);
+  $("#warning").attr("SRC", ""); // include to clean the image due to a delay that was showing the previous image
   if (vntotalscore === 5) {
     vnwins++;
     console.log("wins: " + vnwins);
@@ -188,10 +248,12 @@ $("#warning").attr("SRC", ""); // include to clean the image due to a delay that
   } else {
     $("#imagediv").hide();
     $("#messagediv").hide();
+    $("#instructions").show();
     $("#questiondiv").show();
+    $("#question").show();
     question.new();
-    question.stopwatch.reset();
-    question.stopwatch.start();
+
+  //  question.stopwatch.start();
     totquestions++;
 
   }
@@ -201,22 +263,23 @@ $("#warning").attr("SRC", ""); // include to clean the image due to a delay that
 
 // This code will run as soon as the page loads. Just show the initial page and wait user command the start of a new game
 window.onload = function () {
+  $("#instructions").show();
   $("#results").show();
-  $("#questiondiv").show();
+  $("#questiondiv").hide();
   $("#wrapper").hide();
 }
-$( ".answer" ) // select each answer object and change the color of background when user pass the mouse over the answer
-  .mouseenter(function() {
-    
-    $( this ).css("background-color", "green");
-    $( this ).css("color", "white");
+$(".answer") // select each answer object and change the color of background when user pass the mouse over the answer
+  .mouseenter(function () {
+
+    $(this).css("background-color", "aquamarine");
+    $(this).css("color", "white");
   })
 
-  $( ".answer" )
-  .mouseleave(function() {
-    
-    $( this ).css("background-color", "white");
-    $( this ).css("color", "black");
+$(".answer")
+  .mouseleave(function () {
+
+    $(this).css("background-color", "white");
+    $(this).css("color", "green");
   })
 
 $("#start").on("click", function () { // start a new game when user click

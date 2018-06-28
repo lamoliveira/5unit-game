@@ -1,19 +1,60 @@
 /**
- * Style for crystal game
+ * Style for trivia game
  * Luiz Oliveira
  **/
-
-* {
-  text-align: left;
+ * {
+  text-align: center;
   font-style: 'Arial', 'Helvetica Neue', Helvetica, sans-serif; 
 }
-
-body{
-  width: 900px;
+p{
+  font-size: 12px;
 }
-
+body {
+  background-size: cover;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: green;
+}
 .card-header{
+  text-align: center;
   font-size: 16px;
-  font-size-adjust: initial;
+}
+        h4{
+          text-align: center;
+        }
+        .result{
+          text-align: center;
+          font-size: 12px;
+          margin-top: 10px;
+        }
+        .bord{
+          border: 1px solid aquamarine;
+        }
+#start{
+   margin: 7px;
+   background-color: green;
 }
 
+.gamediv{
+  background-color: aquamarine;
+
+}
+#questiondiv{
+border: 1px solid aquamarine;
+}
+.result{
+  height: 30px;
+  
+  text-align: center;
+  
+}
+#messagediv {font-size: 30px;}
+#question {font-size: 20px;}
+
+.img-fluid{
+  border: 2px solid green;
+  
+  border-radius: 4px;
+  
+  transition: box-shadow 1s;
+}

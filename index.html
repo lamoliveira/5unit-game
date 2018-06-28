@@ -20,103 +20,115 @@
     <div class="container">
 
         <!-- Jumbotron with Title -->
-        <div class="text-center">
-            <h1 class="text-center" style="margin-top: 20px">
-                <strong>Totally trivial trivia!!</strong>
+        <div class="gamediv col-12">
+            <h1 class="gametitle">
+                <h1 class="gametitle">Totally trivial trivia!!</h1>
             </h1>
             <hr>
         </div>
-        <div id="imagediv" class="text-center">
-            <img id="warning" src="" style="float: center;" width="250px"> </div>
-        <div id="messagediv" class="text-center"> </div>
+        <div id="imagediv" class="text-center col-12">
+            <div class=".col-md-3 .ml-md-auto">
+                <img id="warning" src="">
+            </div>
+        </div>
+        <div id="messagediv" class="text-center col-12">
+        </div>
 
-        <div id="questiondiv" >
-            <div class="text-center">
-                <!-- Instructions-->
-                <div id="instructions" class="text-center">
-                    <h4 class="card-header" style="text-align: center;">Instructions</h4>
-                    <div class="card-body">
-                        <div class="text-center">
-                            <p style="text-align: justify;font-size: 16px"> You will be given 5 random question at the start of the game. There are four answers below. Just
-                                click the correct answer.</p>
-                        </div>
-                    </div>
-                    <h4 id="question" class="card-header" style="text-align: left;"></h4>
-
-                    <div id="wrapper">
-                        <img id="warning1" style="float: right;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
-                        <img id="warning2" style="float: right;margin-right: 50px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
-                        <img id="warning3" style="float: right;margin-right: 60px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
-                        <img id="warning4" style="float: right;margin-right: 70px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
-                        <div id="display" style="text-align: center;"></div>
-                        <h4 id="answer1" class="card-header answer" style="text-align: left;background-color:white;">A - </h4>
-                        <h4 id="answer2" class="card-header answer" style="text-align: left;background-color: white;">B - </h4>
-                        <h4 id="answer3" class="card-header answer" style="text-align: left;background-color: white;">C - </h4>
-                        <h4 id="answer4" class="card-header answer" style="text-align: left;background-color: white;">D - </h4>
-
-                    </div>
+        <!-- Instructions-->
+        <div id="instructions" class="card-header">
+            <h4 class="gamediv card-header">Instructions</h4>
+            <div class="card-body">
+                <div class="text-center">
+                    <p style="text-align: justify;font-size: 16px"> You will be given 5 random question at the start of the game. There are four answers below. Just click
+                        the correct answer.</p>
                 </div>
-
-
-                <div id="results" class="text-center">
-                    <h4 class="card" style="text-align: center;">Results</h4>
-                    <button id="start" type="button" class="btn btn-primary">Start new game</button>
-                    <!-- Results-->
-                    <div class="card-group">
-                        <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Correct</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="sptotalscore" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Incorrect</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="sperrors" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Unanswered</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="spnotanswered" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Wins</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="spwins" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="Results" class="card" style="width: 225px">
-                            <h4 class="card-header" style="text-align: center;">Losses</h4>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <p id="splosses" value="0" style="text-align: center;">0</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            </div>
+        </div>
+        <div id="questiondiv" class="col-12">
+            <div class="text-center col-12">
+                <div id="question">
+                    <h4 class="card-header" style="text-align: left;"></h4>
+                </div>
+                <div id="wrapper">
+                    <img id="warning1" style="float: right;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
+                    <img id="warning2" style="float: right;margin-right: 10px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
+                    <img id="warning3" style="float: right;margin-right: 15px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
+                    <img id="warning4" style="float: right;margin-right: 20px;" src="assets/images/timeisup.jpg" width="70px" alt="Hurry up!!!">
+                    <div id="display" style="text-align: center;"></div>
+                    <h4 id="answer1" class="card-header answer" style="text-align: left;background-color:white;">A - </h4>
+                    <h4 id="answer2" class="card-header answer" style="text-align: left;background-color: white;">B - </h4>
+                    <h4 id="answer3" class="card-header answer" style="text-align: left;background-color: white;">C - </h4>
+                    <h4 id="answer4" class="card-header answer" style="text-align: left;background-color: white;">D - </h4>
 
                 </div>
 
             </div>
         </div>
+        <div id="results" class="text-center col-12">
+            <div class="gamediv text-center">
+                <h4 class="card-header col-12">Results</h4>
 
-        <!-- jQuery -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            </div>
+            <div>
+                <button id="start" type="button" class="btn btn-primary">Start new game</button>
+            </div>
+            <div class="text-center col-12">
 
-        <!-- Script -->
-        <script type="text/javascript" src="questions.js"></script>
-        <script type="text/javascript" src="quiz.js"></script>
+                <div class="card-group col-12 bord">
+                    <div id="results" class=" col-2">
+                        <h3 class="gamediv result">Correct</h4>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <p id="sptotalscore" value="0">0</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div id="results" class=" col-3">
+                        <h3 class="gamediv result">Incorrect</h3>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="sperrors" value="0">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="results" class=" col-3">
+                        <h3 class="gamediv result">Unanswered</h3>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="spnotanswered" value="0">0</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="results" class=" col-2">
+                        <h3 class="gamediv result">Wins</h3>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="spwins" value="0">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="results" class="col-2">
+                        <h3 class="gamediv result">Losses</h3>
+                        <div class="card-body">
+                            <div class="text-center">
+                                <p id="splosses" value="0">0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Script -->
+    <script type="text/javascript" src="questions.js"></script>
+    <script type="text/javascript" src="quiz.js"></script>
 
 </body>
 
